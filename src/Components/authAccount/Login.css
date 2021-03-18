@@ -1,0 +1,36 @@
+.login {
+  display: grid;
+  place-items: center;
+  height: 90vh;
+  overflow: hidden;
+}
+.login__content {
+  text-align: center;
+  margin: 20px;
+  padding: 50px;
+  border-radius: 15px;
+  background-color: rgb(7, 136, 136);
+  color: rgb(59, 55, 55);
+}
+.login__content > img {
+  object-fit: contain;
+  height: 100px;
+  border-radius: 40px;
+  filter: invert();
+  margin-bottom: 20px;
+}
+.login__content > button {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-transform: inherit !important;
+  background-color: rgb(19, 8, 4);
+  color: rgb(252, 59, 59);
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+.login__content > p {
+  font-size: 18px;
+  color: rgb(70, 67, 67);
+}

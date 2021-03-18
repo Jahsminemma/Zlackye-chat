@@ -1,0 +1,50 @@
+.chathome {
+  text-align: center;
+  background: url("../../assets/images/chatbackground.png");
+  background-position: center;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  height: 92vh;
+  width: 80vw;
+  margin-top: 60px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chathome::-webkit-scrollbar {
+  display: none;
+}
+.chathome__content {
+  width: 600px;
+  padding: 30px;
+  box-shadow: 0px 0px 2px rgb(24, 23, 23);
+  border-radius: 10px;
+  color: gray;
+}
+@media (max-width: 700px) {
+  .chathome__content {
+    width: 90%;
+    padding: 10px;
+  }
+}
+.chathome__content::-webkit-scrollbar {
+  display: none;
+}
+
+.chathome__content > img {
+  width: 200px;
+  border-radius: 30%;
+  filter: invert();
+  padding: 15px 0;
+}
+.chathome > p {
+  font-weight: 800;
+  color: rgb(17, 250, 238);
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 6%;
+  border-radius: 10px;
+  filter: invert();
+}
