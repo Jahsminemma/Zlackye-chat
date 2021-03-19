@@ -1,5 +1,5 @@
 import './App.css';
-import {useState, useEffect} from 'react'
+import { useEffect} from 'react'
 import Header from './Components/Header/Header'
 import Sidebar from './Components/Sidebar/Sidebar'
 import Chathome from './Components/Chatbody/Chathome'

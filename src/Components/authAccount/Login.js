@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './Login.css'
 import { Button } from '@material-ui/core'
 import db, { auth, provider } from "../../firebase"
@@ -10,34 +10,42 @@ import 'firebase/auth'
 const Login = () => {
     const [state, dispatch] = useStateValue();
    
-    {/*sign in user after successful authentication */}
+    {/*sign in user after successful authentication */ }
     const signIn = () => {
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
             return auth
-            .signInWithPopup(provider)
+                .signInWithPopup(provider)
                 .then((data) => {
-                    console.log(data)
-                
                     const loggedInUser = {
                         displayName: data.user.displayName,
                         photoURL: data.user.photoURL,
                         uid: data.user.uid
                     }
                     localStorage.setItem("User", JSON.stringify(loggedInUser))
-                dispatch({
-                    type: actionType.SET_USER,
-                    user : loggedInUser
-                })
+                    dispatch({
+                        type: actionType.SET_USER,
+                        user: loggedInUser
+                    })
                 })
                 .catch(error => {
                     dispatch({
                         type: `${actionType.SET_USER}_FAILURE`,
                         error: error
+                    })
+                    alert(error.message)
                 })
-            alert(error.message)
-            })
         })
     }
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            db.collection("users").doc(user.uid).set({
+                displayName: user.displayName,
+                photoURL: user.photoURL,
+                uid: user.uid,
+                 isCreatedAt: Date.now()
+             })
+        }
+   })
     return (
         <div className = "login">
             <div className="login__content">

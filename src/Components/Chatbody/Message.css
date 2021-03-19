@@ -1,6 +1,6 @@
 .message__content {
   display: flex;
-  margin-top: 80px;
+  margin-top: 10px;
   align-items: center;
   margin-left: 13px;
   text-align: left;
@@ -10,6 +10,9 @@
   width: 33%;
   background-color: lightgrey;
   color: rgb(83, 81, 81);
+}
+.message:nth-child(1) {
+  margin-top: 70px;
 }
 .message__content > img {
   width: 55px;
@@ -23,8 +26,8 @@
     width: 90%;
   }
   .message__content > img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     margin-right: 8px;
   }
 }

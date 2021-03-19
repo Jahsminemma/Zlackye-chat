@@ -37,37 +37,7 @@
 .channel__icons .MuiSvgIcon-root {
   color: gray;
 }
-.message__input {
-  position: fixed;
-  width: 70%;
-  text-align: center;
-  bottom: 0px;
-}
-.message__input form textarea {
-  padding: 16px;
-  width: 85%;
-  border-radius: 20px;
-  border: none;
-  margin: 10px;
-  padding-right: 60px;
-  font-size: 18px;
-  color: gray;
-}
-.message__input form textarea::-webkit-scrollbar {
-  display: none;
-}
-.message__input form textarea:focus {
-  border: none;
-  outline: none;
-}
-form button {
-  width: 40px;
-  bottom: 20px;
-  right: 36px;
-  position: absolute;
-  outline: none;
-  border: none;
-}
+
 @media (max-width: 600px) {
   .chat__header .chat__details {
     font-size: 10px;
@@ -77,8 +47,5 @@ form button {
   }
   .chat__header {
     width: 65%;
-  }
-  .message__input form textarea {
-    width: 58%;
   }
 }

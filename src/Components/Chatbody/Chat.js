@@ -1,21 +1,28 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, useRef} from 'react'
 import "./Chat.css"
 import { useParams } from "react-router-dom"
-import{ Avatar, TextareaAutosize } from '@material-ui/core'
+import{ Avatar} from '@material-ui/core'
 import ExploreIcon from '@material-ui/icons/Explore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import db from "../../firebase"
 import Message from './Message'
-import SendIcon from '@material-ui/icons/Send';
-import Textarea from 'react-textarea-autosize'
+import MessageInput from "./MessageInput";
+
+
 
 const Chat = () => {
 
     const { roomId } = useParams()
     const [roomInfos, setRoomInfos] = useState([])
     const [channelMessages, setChannelMessages] = useState([])
+    const scrollToView = useRef(null)
+
+    const scrollToBottom = () => {
+        scrollToView.current.scrollIntoView({behaviour : "smooth"})
+    }
 
     useEffect(() => {
+        scrollToBottom()
         if (roomId) {
             db.collection("rooms").doc(roomId).onSnapshot(snapshot => {
                 setRoomInfos(snapshot.data())
@@ -55,11 +62,11 @@ const Chat = () => {
                     )
                })}
             </div>
+            <div style={{ float: "left", clear: "both" , height:"100px", backgroundColor:"black"}}
+                ref={scrollToView }>
+            </div>
              <div className="message__input">
-                        <form action="">
-                    <Textarea  placeholder= "Type a message" maxRows={5} />
-                            <button type="submit"><SendIcon/> </button>
-                    </form>
+                < MessageInput ref={ scrollToView}/>
                 </div>
         </div>
     )

@@ -7,7 +7,8 @@ export const initialState = {
 }
 
 export const actionType = {
-    SET_USER : "SET_USER"
+    SET_USER: "SET_USER",
+    SET_LOGOUT: "SET_LOGOUT"
 }
 
 
