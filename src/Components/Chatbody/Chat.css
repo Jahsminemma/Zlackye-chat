@@ -1,11 +1,10 @@
 .chat {
-  width: 80%;
+  flex: 0.8;
   background: url("../../assets/images/chatbackground.png");
   background-position: center;
   text-align: center;
   color: black;
-  height: 93vh;
-  width: 80vw;
+  height: 100vh;
   margin-top: 60px;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -18,21 +17,20 @@
 .chat__header {
   display: flex;
   justify-content: space-between;
-  height: 40px;
+  height: 45px;
+  text-align: left;
   align-items: center;
-  padding-right: 10px;
   background-color: lightgray;
   position: fixed;
-  width: 79%;
+  width: 80%;
 }
 .chat__header .chat__details {
   display: flex;
-  padding: 8px;
-  align-items: center;
+  padding: 15px;
   font-size: 14px;
 }
 .chat__header .channel__info {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .channel__icons .MuiSvgIcon-root {
   color: gray;
@@ -42,10 +40,7 @@
   .chat__header .chat__details {
     font-size: 10px;
   }
-  .chat {
-    width: 80%;
-  }
-  .chat__header {
-    width: 65%;
-  }
+}
+.message__input {
+  background-color: grey;
 }

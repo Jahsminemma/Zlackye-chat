@@ -17,14 +17,13 @@ const MessageInput = () => {
     const sendMessage = (e) => {
         e.preventDefault()
         e.target.value = ""
-        if (roomId) {
+        if (roomId && inputValue) {
             db.collection('rooms').doc(roomId).collection("messages").add({
                 message: inputValue,
                 user: user.displayName,
                 userImage: user.photoURL,
                 timeStamp: firebase.firestore.FieldValue.serverTimestamp()
             })
-            document.body.scrollHeight(`${40}px`)
             setInputValue("")
         }
     }

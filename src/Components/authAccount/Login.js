@@ -41,6 +41,7 @@ const Login = () => {
             db.collection("users").doc(user.uid).set({
                 displayName: user.displayName,
                 photoURL: user.photoURL,
+                isOnline : true,
                 uid: user.uid,
                  isCreatedAt: Date.now()
              })

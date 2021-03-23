@@ -5,9 +5,33 @@ import{ Avatar } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsIcon from '@material-ui/icons/Settings';
 import {useStateValue} from '../../StateProvider'
+import { initialState } from '../../reducer';
+import {actionType} from '../../reducer'
+import db, { auth } from '../../firebase'
+import { Link } from 'react-router-dom'
+
 
 const Header = () => {
-    const [{user}, dispatch] = useStateValue()
+
+
+    const [{ user }, dispatch] = useStateValue()
+
+    const logout = () => {
+        db.collection("users").doc(auth.currentUser.uid).update({
+            isOnline: false,
+        }).then(() => {
+        dispatch({
+            type: actionType.SET_LOGOUT,
+            user: initialState
+
+        })
+        localStorage.clear()
+        })
+            .catch(error => {
+            alert(error.message)
+        })
+    }
+
     return (
         <div className="header">
             <div className="header__left">
@@ -19,10 +43,14 @@ const Header = () => {
                 <input type="text" placeholder="search Jahsminemma channel" />
                 
             </div>
-            <div className="header__help">
-             <SettingsIcon />
+            <Link  to="#">
+            <div onClick ={logout} className="header__help">
+                <SettingsIcon />
+                <h2>logout</h2>
             </div>
-        </div>
+            </Link>
+            </div>
+            
     )
 }
 

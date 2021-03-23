@@ -1,10 +1,11 @@
 .sidebar {
-  width: 20%;
+  flex: 0.2;
   background-color: rgb(0, 52, 110);
   color: whitesmoke;
   border-top: 1.5px solid rgb(6, 122, 175);
-  height: 93vh;
+  height: 100vh;
   margin-top: 60px;
+  padding-top: 10px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -19,12 +20,11 @@
 }
 .sidebar__top {
   font-size: 15px;
-  margin: 10px 0 0 10px;
   padding-bottom: 10px;
   font-family: "roboto", monospace;
 }
 .sidebar__details h4 > img {
-  width: 40px;
+  width: 30px;
   filter: invert();
   margin-right: 2px;
   border-radius: 40%;

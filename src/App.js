@@ -45,7 +45,7 @@ function App() {
           <Switch>
             <Route path='/' exact component={Chathome} />
             <Route path="/room/:roomId" component={Chat} />
-          </Switch>
+                  </Switch>
         </div>
               </>
           )

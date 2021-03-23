@@ -28,6 +28,11 @@ const reducer = (state, action) => {
                 authenticated: false,
                 error: action.error
             }
+        case actionType.SET_LOGOUT:
+            return {
+                ...state,
+                user: action.user
+            }
         default:
             return state
     }

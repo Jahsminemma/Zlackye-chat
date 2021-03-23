@@ -38,11 +38,6 @@ const SidebarOption = ({ Icon, title, value, id, addChannelOption }) => {
                     </h4>
                     )}
                 </div>
-            {value ? (
-                <p>{ value }</p>
-            ) : (
-                <span></span>
-            )}
         </div>
     )
 }

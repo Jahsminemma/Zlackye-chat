@@ -7,6 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import db from "../../firebase"
 import Message from './Message'
 import MessageInput from "./MessageInput";
+import avatar from '../../assets/images/avatar.png'
 
 
 
@@ -15,6 +16,7 @@ const Chat = () => {
     const { roomId } = useParams()
     const [roomInfos, setRoomInfos] = useState([])
     const [channelMessages, setChannelMessages] = useState([])
+
     const scrollToView = useRef(null)
 
     const scrollToBottom = () => {
@@ -22,7 +24,6 @@ const Chat = () => {
     }
 
     useEffect(() => {
-        scrollToBottom()
         if (roomId) {
             db.collection("rooms").doc(roomId).onSnapshot(snapshot => {
                 setRoomInfos(snapshot.data())
@@ -34,12 +35,17 @@ const Chat = () => {
             })
         }
     }, [roomId])
+
+     useEffect(() => {
+         scrollToBottom()
+    }, [channelMessages])
+    
     return (
         <div className="chat">
             <div className="chat__header">
                 <div className="chat__details">
                 <div className="channel__avatar">
-                        <Avatar />
+                        <Avatar src ={avatar}/>
                  </div>
                     <div className="channel__info">
                         
@@ -57,16 +63,16 @@ const Chat = () => {
                    
                     const { user, message, userImage, timeStamp } = channelMessage;
                     return (
-                         <Message
+                         <Message 
                             user={user} userImage={userImage} message={message} timeStamp={ timeStamp}/>
                     )
                })}
             </div>
-            <div style={{ float: "left", clear: "both" , height:"100px", backgroundColor:"black"}}
+            <div style={{height:"80px"}}
                 ref={scrollToView }>
             </div>
              <div className="message__input">
-                < MessageInput ref={ scrollToView}/>
+                < MessageInput/>
                 </div>
         </div>
     )
