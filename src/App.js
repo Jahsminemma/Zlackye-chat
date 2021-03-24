@@ -7,9 +7,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Chat from "./Components/Chatbody/Chat";
 import Signup from '../src/Components/authAccount/Login'
 import {useStateValue} from "./StateProvider"
-import {actionType} from './reducer'
+import { actionType } from './reducer'
+import {Redirect} from 'react-router-dom'
 
 function App() {
+
  
   const [state, dispatch] = useStateValue()
    {/* check if user is logged in */}
@@ -28,7 +30,8 @@ function App() {
         }
     }
 
-    useEffect(() => {
+  useEffect(() => {
+      
         isLoggedInUser()
     }, [])
   return (
@@ -45,7 +48,9 @@ function App() {
           <Switch>
             <Route path='/' exact component={Chathome} />
             <Route path="/room/:roomId" component={Chat} />
-                  </Switch>
+            <Route path="/user/:userId" component={Signup} />
+                    
+          </Switch>
         </div>
               </>
           )

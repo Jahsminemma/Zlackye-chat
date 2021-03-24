@@ -21,21 +21,24 @@ const reducer = (state, action) => {
                 user: action.user,
                 authenticated: true,
             }
-            
+    
         case `${actionType.SET_USER}_FAILURE`:
             return {
                 ...state,
                 authenticated: false,
                 error: action.error
             }
+
         case actionType.SET_LOGOUT:
-            return {
-                ...state,
-                user: action.user
+            state = {
+                ...initialState
             }
+            break;
         default:
             return state
     }
+    return state
+   
 }
 
 export default reducer

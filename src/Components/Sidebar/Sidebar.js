@@ -5,24 +5,35 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SmsIcon from '@material-ui/icons/Sms';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import PeopleIcon from '@material-ui/icons/People';
 import { useState, useEffect } from 'react'
 import AttachFileIcon from '@material-ui/icons/AttachFile'
 import AddIcon from '@material-ui/icons/Add';
-import db from "../../firebase"
+import { Avatar } from '@material-ui/core'
+import db, {auth} from "../../firebase"
 import { Link } from 'react-router-dom'
 import { useStateValue } from "../../StateProvider"
 const Sidebar = () => {
     const [channels, setChannel] = useState([])
+    const [users, setUsers] = useState([])
     const [{user}, dispatch] = useStateValue()
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map(doc => ({
                 id: doc.id,
                 name: doc.data().name 
-        })))
+            })))
         ))
+        db.collection("users").onSnapshot(snapshot => {
+            snapshot.docs.map(doc => {
+                if (user.uid != doc.id) {
+                    setUsers([doc.data()])
+                }
+            })
+        })
        
     }, [])
+    console.log(users)
     return (
         <div className="sidebar">
             <div className="sidebar__content">
@@ -50,11 +61,22 @@ const Sidebar = () => {
                 {channels.map(channel => {
                 const {name, id} = channel
                 return (
-                    <div className="sidebar__channelOption">
-                        <SidebarOption key={id} title={name} id ={id} />
+                    <div key={id} className="sidebar__channelOption">
+                        <SidebarOption  title={name} id ={id} />
                     </div>
                 )
-            })}
+                })}
+                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
+                
+                {users.map((user) => {
+                    const { photoURL, uid, displayName } = user;
+                  console.log(photoURL);
+                return(
+                    <div key={uid} className="Sidebar__userOption">
+                        <SidebarOption Icon={Avatar} src ={photoURL} title={displayName}  uid={uid}/>
+                    </div>
+                )
+                })}
           </div>      
             </div>
     )

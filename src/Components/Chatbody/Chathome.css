@@ -6,7 +6,7 @@
   display: grid;
   place-items: center;
   height: 92vh;
-  width: 80vw;
+  flex: 0.8;
   margin-top: 60px;
   overflow-y: scroll;
   -ms-overflow-style: none;

@@ -17,18 +17,9 @@ const Header = () => {
     const [{ user }, dispatch] = useStateValue()
 
     const logout = () => {
-        db.collection("users").doc(auth.currentUser.uid).update({
-            isOnline: false,
-        }).then(() => {
-        dispatch({
-            type: actionType.SET_LOGOUT,
-            user: initialState
-
-        })
         localStorage.clear()
-        })
-            .catch(error => {
-            alert(error.message)
+        dispatch({
+            type: actionType.SET_LOGOUT
         })
     }
 

@@ -16,12 +16,16 @@
 }
 .sidebarOption__icon,
 .sidebarOption__hash {
-  padding-right: 8px;
+  margin-right: 8px;
+  color: orangered;
 }
 .sidebarOption > .sidebarOption__details > .MuiSvgIcon-root {
-  font-size: 20px;
+  font-size: 23px;
 }
 .sidebarOption__channel > .sidebarOption__hash {
   font-size: 15px;
   margin-left: 6px;
+}
+.sidebarOption__authUsers {
+  color: orangered;
 }
