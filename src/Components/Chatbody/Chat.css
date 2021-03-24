@@ -1,5 +1,5 @@
 .chat {
-  flex: 0.8;
+  flex: 0.7;
   background: url("../../assets/images/chatbackground.png");
   background-position: center;
   text-align: center;
@@ -22,12 +22,15 @@
   align-items: center;
   background-color: lightgray;
   position: fixed;
-  width: 80%;
+  width: 70%;
 }
 .chat__header .chat__details {
   display: flex;
   padding: 15px;
   font-size: 14px;
+}
+.chat__header .chat__backBtn {
+  margin-top: 10px;
 }
 .chat__header .channel__info {
   margin-left: 10px;
@@ -36,11 +39,20 @@
   color: gray;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .chat__header .chat__details {
     font-size: 10px;
   }
+  .chat {
+    width: 100%;
+    margin-top: 0%;
+  }
+  .chat__header {
+    width: 100%;
+    padding-top: 60px;
+  }
 }
 .message__input {
-  background-color: grey;
+  background-color: rgb(204, 202, 202);
+  width: 100%;
 }

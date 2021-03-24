@@ -1,11 +1,9 @@
 .sidebarOption {
-  display: flex;
-  align-items: center;
   padding-left: 10px;
   margin-bottom: 10px;
   justify-content: space-between;
   user-select: none;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
 }
 .sidebarOption:hover {
@@ -13,19 +11,31 @@
 }
 .sidebarOption__details {
   display: flex;
+  align-items: center;
 }
 .sidebarOption__icon,
 .sidebarOption__hash {
   margin-right: 8px;
   color: orangered;
 }
+.sidebarOption__userPresence {
+  position: absolute;
+  color: lime;
+}
+.sidebarOption__userPresence .MuiSvgIcon-root,
+.sidebarOption__offline .MuiSvgIcon-root {
+  font-size: 12px;
+  margin-left: 16px;
+  margin-top: 20px;
+}
+.sidebarOption__offline {
+  color: rgb(165, 177, 165);
+  position: absolute;
+}
 .sidebarOption > .sidebarOption__details > .MuiSvgIcon-root {
-  font-size: 23px;
+  font-size: 24px;
 }
 .sidebarOption__channel > .sidebarOption__hash {
-  font-size: 15px;
+  font-size: 18px;
   margin-left: 6px;
-}
-.sidebarOption__authUsers {
-  color: orangered;
 }

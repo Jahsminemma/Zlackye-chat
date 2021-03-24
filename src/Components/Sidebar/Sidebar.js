@@ -26,8 +26,10 @@ const Sidebar = () => {
         ))
         db.collection("users").onSnapshot(snapshot => {
             snapshot.docs.map(doc => {
+                const userData =[]
                 if (user.uid != doc.id) {
-                    setUsers([doc.data()])
+                    userData.push(doc.data())
+                    setUsers(userData)
                 }
             })
         })
@@ -45,7 +47,7 @@ const Sidebar = () => {
                                 <p>Zlackye</p>
                             </h4>
                         </Link>
-                <h5>
+                        <h5>
                     <FiberManualRecordIcon /> 
                    {user?.displayName}
                 </h5>
@@ -66,14 +68,13 @@ const Sidebar = () => {
                     </div>
                 )
                 })}
-                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
+{}                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
                 
                 {users.map((user) => {
-                    const { photoURL, uid, displayName } = user;
-                  console.log(photoURL);
+                    const { photoURL, uid, displayName, isOnline } = user;
                 return(
                     <div key={uid} className="Sidebar__userOption">
-                        <SidebarOption Icon={Avatar} src ={photoURL} title={displayName}  uid={uid}/>
+                        <SidebarOption isOnline ={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL ={photoURL} title={`${displayName[0]}. ${displayName.split(" ")[1]}`}  uid={uid}/>
                     </div>
                 )
                 })}

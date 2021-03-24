@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
 import Header from './Components/Header/Header'
 import Sidebar from './Components/Sidebar/Sidebar'
 import Chathome from './Components/Chatbody/Chathome'
@@ -8,11 +8,11 @@ import Chat from "./Components/Chatbody/Chat";
 import Signup from '../src/Components/authAccount/Login'
 import {useStateValue} from "./StateProvider"
 import { actionType } from './reducer'
-import {Redirect} from 'react-router-dom'
+
 
 function App() {
 
- 
+ const [show, setShow] = useState(false)
   const [state, dispatch] = useStateValue()
    {/* check if user is logged in */}
     const isLoggedInUser =  () => {
@@ -48,10 +48,16 @@ function App() {
           <Switch>
             <Route path='/' exact component={Chathome} />
             <Route path="/room/:roomId" component={Chat} />
-            <Route path="/user/:userId" component={Signup} />
-                    
+            <Route path="/user/:userId" component={Signup} /> 
           </Switch>
-        </div>
+                </div>
+                <div className="app__mobileView">
+                   <Switch>
+                    <Route path='/' exact component={Sidebar} />
+                    <Route path="/room/:roomId" component={Chat} />
+                    <Route path="/user/:userId" component={Signup} /> 
+                   </Switch>`
+                </div>
               </>
           )
         }

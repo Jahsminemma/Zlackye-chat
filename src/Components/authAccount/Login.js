@@ -16,16 +16,25 @@ const Login = () => {
             return auth
                 .signInWithPopup(provider)
                 .then((data) => {
-                    const loggedInUser = {
-                        displayName: data.user.displayName,
-                        photoURL: data.user.photoURL,
-                        uid: data.user.uid
-                    }
-                    localStorage.setItem("User", JSON.stringify(loggedInUser))
-                    dispatch({
-                        type: actionType.SET_USER,
-                        user: loggedInUser
-                    })
+                    db.collection("users").doc(data.user.uid)
+                        .set({
+                            displayName: data.user.displayName,
+                            photoURL: data.user.photoURL,
+                            uid: data.user.uid,
+                            isCreated: Date.now(),
+                            isOnline: true
+                        }).then(() => {
+                            const loggedInUser = {
+                            displayName: data.user.displayName,
+                            photoURL: data.user.photoURL,
+                            uid: data.user.uid
+                            }
+                             localStorage.setItem("User", JSON.stringify(loggedInUser))
+                                dispatch({
+                                    type: actionType.SET_USER,
+                                    user: loggedInUser
+                                })
+                         })
                 })
                 .catch(error => {
                     dispatch({
@@ -36,17 +45,6 @@ const Login = () => {
                 })
         })
     }
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            db.collection("users").doc(user.uid).set({
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-                isOnline : true,
-                uid: user.uid,
-                 isCreatedAt: Date.now()
-             })
-        }
-   })
     return (
         <div className = "login">
             <div className="login__content">

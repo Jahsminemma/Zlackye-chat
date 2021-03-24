@@ -5,7 +5,7 @@
   object-fit: cover;
   display: grid;
   place-items: center;
-  height: 92vh;
+  height: 100vh;
   flex: 0.8;
   margin-top: 60px;
   overflow-y: scroll;
@@ -22,11 +22,15 @@
   box-shadow: 0px 0px 2px rgb(24, 23, 23);
   border-radius: 10px;
   color: gray;
+  margin-top: 80px;
 }
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .chathome__content {
     width: 90%;
     padding: 10px;
+  }
+  .chathome {
+    margin-top: 0;
   }
 }
 .chathome__content::-webkit-scrollbar {

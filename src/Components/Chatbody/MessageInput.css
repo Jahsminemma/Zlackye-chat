@@ -1,18 +1,20 @@
 .message__input {
   position: fixed;
-  width: 80%;
+  width: 70%;
   text-align: center;
   bottom: 0px;
 }
 .message__input form textarea {
-  padding: 16px;
-  width: 85%;
+  padding: 10px;
+  width: 70%;
   border-radius: 20px;
   border: none;
+  background-color: rgb(252, 246, 246);
   margin: 10px;
   padding-right: 60px;
   font-size: 18px;
-  color: gray;
+  color: rgb(179, 175, 175);
+  position: relative;
 }
 .message__input form textarea::-webkit-scrollbar {
   display: none;
@@ -21,17 +23,32 @@
   border: none;
   outline: none;
 }
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 form button {
-  width: 40px;
   bottom: 20px;
-  right: 44px;
   position: absolute;
+  top: 18px;
+  margin-left: 75%;
+  color: rgb(68, 67, 67);
   outline: none;
   background-color: transparent;
   border: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .message__input form textarea {
-    width: 58%;
+    width: 90%;
+    padding: 6px;
+  }
+  form button {
+    right: 12px;
+    top: 15px;
+  }
+  .message__input {
+    width: 100%;
   }
 }

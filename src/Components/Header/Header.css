@@ -7,13 +7,12 @@
   padding: 10px 0;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header__left {
   flex: 0.3;
   display: flex;
-  font-size: 18px;
   justify-content: center;
   align-items: center;
   margin-left: 10px;
@@ -68,4 +67,19 @@
 }
 .header__help > h2 {
   margin-right: 32px;
+}
+@media (max-width: 500px) {
+  .header__search {
+    text-align: left;
+    padding: 0%;
+  }
+  .header__search input {
+    width: 10px;
+    text-align: left;
+    padding: 0;
+  }
+  .header__help {
+    margin: 0%;
+    margin-left: 10px;
+  }
 }

@@ -8,7 +8,9 @@ import db from "../../firebase"
 import Message from './Message'
 import MessageInput from "./MessageInput";
 import avatar from '../../assets/images/avatar.png'
-
+import { useStateValue } from "../../StateProvider";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import {Link} from 'react-router-dom'
 
 
 const Chat = () => {
@@ -16,7 +18,7 @@ const Chat = () => {
     const { roomId } = useParams()
     const [roomInfos, setRoomInfos] = useState([])
     const [channelMessages, setChannelMessages] = useState([])
-
+    const [{user}, dispatch] = useStateValue()
     const scrollToView = useRef(null)
 
     const scrollToBottom = () => {
@@ -44,6 +46,9 @@ const Chat = () => {
         <div className="chat">
             <div className="chat__header">
                 <div className="chat__details">
+                    <Link to="/" className="chat__backBtn">
+                        <ArrowBackIosIcon/>   
+                    </Link>
                 <div className="channel__avatar">
                         <Avatar src ={avatar}/>
                  </div>
@@ -59,7 +64,7 @@ const Chat = () => {
                 </div>
             </div>
             <div className="chat__message">
-                {channelMessages.map(channelMessage => {
+                { channelMessages.map(channelMessage => {
                    
                     const { user, message, userImage, timeStamp } = channelMessage;
                     return (
