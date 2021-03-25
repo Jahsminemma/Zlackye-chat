@@ -10,7 +10,7 @@ const MessageInput = () => {
 
     const { roomId }=  useParams()
      const [inputValue, setInputValue] = useState("")
-    const [{user}, dispatch] = useStateValue()
+    const [state, dispatch] = useStateValue()
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
@@ -20,9 +20,10 @@ const MessageInput = () => {
         if (roomId && inputValue) {
             db.collection('rooms').doc(roomId).collection("messages").add({
                 message: inputValue,
-                user: user.displayName,
-                userImage: user.photoURL,
-                timeStamp: firebase.firestore.FieldValue.serverTimestamp()
+                user: state.auth.user.displayName,
+                userImage: state.auth.user.photoURL,
+                timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+                uid:state.auth.user.uid
             })
             setInputValue("")
         }

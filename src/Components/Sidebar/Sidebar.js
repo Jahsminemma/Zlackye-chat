@@ -10,32 +10,39 @@ import { useState, useEffect } from 'react'
 import AttachFileIcon from '@material-ui/icons/AttachFile'
 import AddIcon from '@material-ui/icons/Add';
 import { Avatar } from '@material-ui/core'
-import db, {auth} from "../../firebase"
+import db from "../../firebase"
 import { Link } from 'react-router-dom'
 import { useStateValue } from "../../StateProvider"
+import { userAction } from '../../user.reducer';
 const Sidebar = () => {
     const [channels, setChannel] = useState([])
-    const [users, setUsers] = useState([])
-    const [{user}, dispatch] = useStateValue()
+    const [state, dispatch] = useStateValue()
+    
+    const getDbUsers = () => {
+        db.collection("users")
+            .onSnapshot(snapshot => {
+            const userData = []
+            snapshot.forEach(doc => {
+                if (state.auth.user.uid !== doc.id) {
+                    userData.push(doc.data())
+                }
+            })
+                dispatch({
+                    type: userAction.REALTIME_USER,
+                    user : userData
+
+                })
+        })
+        
+    }
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map(doc => ({
                 id: doc.id,
-                name: doc.data().name 
-            })))
-        ))
-        db.collection("users").onSnapshot(snapshot => {
-            snapshot.docs.map(doc => {
-                const userData =[]
-                if (user.uid != doc.id) {
-                    userData.push(doc.data())
-                    setUsers(userData)
-                }
-            })
-        })
-       
-    }, [])
-    console.log(users)
+                name: doc.data().name
+            })))))
+        getDbUsers()
+    },[])
     return (
         <div className="sidebar">
             <div className="sidebar__content">
@@ -49,7 +56,7 @@ const Sidebar = () => {
                         </Link>
                         <h5>
                     <FiberManualRecordIcon /> 
-                   {user?.displayName}
+                   {state.auth.user.displayName}
                 </h5>
                 </div>
             </div>
@@ -70,11 +77,12 @@ const Sidebar = () => {
                 })}
 {}                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
                 
-                {users.map((user) => {
-                    const { photoURL, uid, displayName, isOnline } = user;
+                {state.users.user.map((userData) => {
+                    console.log(userData)
+                    const { photoURL, uid, displayName, isOnline } = userData;
                 return(
                     <div key={uid} className="Sidebar__userOption">
-                        <SidebarOption isOnline ={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL ={photoURL} title={`${displayName[0]}. ${displayName.split(" ")[1]}`}  uid={uid}/>
+                        <SidebarOption isOnline ={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL ={photoURL} title={displayName}  uid={uid}/>
                     </div>
                 )
                 })}

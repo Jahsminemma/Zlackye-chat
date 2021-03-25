@@ -1,0 +1,13 @@
+.userChatScreen {
+  flex: 0.7;
+  background: url("../../assets/images/chatbackground.png");
+  background-position: center;
+  text-align: center;
+  color: black;
+  height: 100vh;
+  margin-top: 40px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-right: 7px;
+}

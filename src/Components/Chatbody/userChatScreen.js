@@ -1,11 +1,14 @@
 import React from 'react'
+import ChatHeader from './ChatHeader'
+import {useParams} from 'react-router-dom'
 
-const userChatScreen = () => {
+const UserChatScreen = () => {
+    const {userId} = useParams() 
     return (
-        <div>
-            User chat userChatScreen
+        <div className="userChatScreen">
+           <ChatHeader/> 
         </div>
     )
 }
 
-export default userChatScreen
+export default UserChatScreen

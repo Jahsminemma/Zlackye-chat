@@ -4,11 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './StateProvider'
-import reducer, {initialState} from "./reducer";
+import reducer, { initialState } from "./reducer";
+import userReducer, { userInitialState } from "./user.reducer";
+import combineReducers from "react-combine-reducers"
+
+ const [Reducer, InitialState] = combineReducers({
+  auth: [reducer, initialState],
+  users: [userReducer, userInitialState]
+})
 
 ReactDOM.render(
   <React.StrictMode>
-   <StateProvider initialState = {initialState} reducer = {reducer} children={App}>
+   <StateProvider InitialState = {InitialState} reducer = {Reducer} children={App}>
       <App />
   </StateProvider>
   </React.StrictMode>,

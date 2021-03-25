@@ -5,20 +5,19 @@ import{ Avatar } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import SettingsIcon from '@material-ui/icons/Settings';
 import {useStateValue} from '../../StateProvider'
-import { initialState } from '../../reducer';
 import {actionType} from '../../reducer'
-import db, { auth } from '../../firebase'
-import { Link } from 'react-router-dom'
+import db from '../../firebase'
+
 
 
 const Header = () => {
 
 
-    const [{ user }, dispatch] = useStateValue()
+    const [state, dispatch] = useStateValue()
 
     const logout = () => {
              db.collection("users")
-            .doc(user.uid)
+            .doc(state.auth.user.uid)
             .update({
             isOnline: false
             }).then(() => {
@@ -34,7 +33,7 @@ const Header = () => {
     return (
         <div className="header">
             <div className="header__left">
-                <Avatar className="header__avatar" src={user?.photoURL} alt= {user?.name} />
+                <Avatar className="header__avatar" src={state.auth.user?.photoURL} alt= {state.auth.user?.name} />
                 <AccessTimeIcon/>
             </div>
             <div className="header__search">

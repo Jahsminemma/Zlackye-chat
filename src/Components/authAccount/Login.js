@@ -10,7 +10,7 @@ import 'firebase/auth'
 const Login = () => {
     const [state, dispatch] = useStateValue();
    
-    {/*sign in user after successful authentication */ }
+    /*sign in user after successful authentication */ 
     const signIn = () => {
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
             return auth
