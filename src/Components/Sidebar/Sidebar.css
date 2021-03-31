@@ -3,9 +3,10 @@
   background-color: rgb(0, 52, 110);
   color: whitesmoke;
   border-top: 1.5px solid rgb(6, 122, 175);
-  height: 90vh;
+  height: 92vh;
   margin-top: 60px;
-  padding: 5px;
+  padding: 8px;
+
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -47,6 +48,7 @@
 .sidebar__top {
   font-size: 15px;
   padding-bottom: 10px;
+  padding-top: 20px;
   font-family: "roboto", monospace;
 }
 

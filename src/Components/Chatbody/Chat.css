@@ -3,7 +3,7 @@
   background: url("../../assets/images/chatbackground.png");
   background-position: center;
   color: black;
-  height: 90vh;
+  height: 93vh;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -16,8 +16,9 @@
 }
 
 .chat .chat__message {
-  padding-top: 50px;
+  padding-top: 0.2px;
 }
+
 .channel__icons .MuiSvgIcon-root {
   color: gray;
 }
@@ -26,9 +27,9 @@
   .chat {
     width: 100%;
     margin-top: 0%;
-    margin-top: 20px;
   }
 }
+
 .message__input {
   background-color: rgb(204, 202, 202);
   width: 100%;

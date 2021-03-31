@@ -4,7 +4,7 @@
   background-position: center;
   text-align: center;
   color: black;
-  height: 90vh;
+  height: 93vh;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -23,9 +23,9 @@
 }
 
 @media (max-width: 500px) {
-  .chat {
+  .userChatScreen {
     width: 100%;
-    margin-top: 0%;
-    margin-top: 20px;
+    margin-top: 0;
+
   }
 }

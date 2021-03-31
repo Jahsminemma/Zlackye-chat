@@ -3,22 +3,22 @@ import Textarea from 'react-textarea-autosize'
 import SendIcon from '@material-ui/icons/Send';
 import './MessageInput.css'
 
-const MessageInput = ({sendMessage,setInputValue, inputValue}) => {
+const MessageInput = ({ sendMessage, setInputValue, inputValue }) => {
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
     return (
         <div className="message_input">
-             <form >
+            <form >
                 <Textarea
-                    value = {inputValue}
+                    value={inputValue}
                     onChange={handleChange}
-                    placeholder="Type a message"
+                    placeholder="Type a message..."
                     maxRows={4} />
-                <button onClick = {sendMessage} type="submit">
+                <button onClick={sendMessage} type="submit">
                     <SendIcon />
                 </button>
-                </form>
+            </form>
         </div>
     )
 }

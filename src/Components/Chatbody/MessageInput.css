@@ -5,6 +5,7 @@
   bottom: 0px;
   z-index: 4;
 }
+
 .message__input form textarea {
   padding: 10px;
   width: 70%;
@@ -14,41 +15,52 @@
   margin: 10px;
   padding-right: 60px;
   font-size: 18px;
-  color: rgb(179, 175, 175);
+  color: #000000;
   position: relative;
 }
+
+.message__input form textarea::placeholder {
+  color: rgb(49, 47, 47);
+}
+
 .message__input form textarea::-webkit-scrollbar {
   display: none;
 }
+
 .message__input form textarea:focus {
   border: none;
   outline: none;
 }
+
 form {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
+
 form button {
   bottom: 20px;
   position: absolute;
   top: 18px;
   margin-left: 75%;
-  color: rgb(68, 67, 67);
+  color: rgb(14, 13, 13);
   outline: none;
   background-color: transparent;
   border: none;
 }
+
 @media (max-width: 500px) {
   .message__input form textarea {
     width: 90%;
     padding: 6px;
   }
+
   form button {
     right: 12px;
     top: 15px;
   }
+
   .message__input {
     width: 100%;
   }

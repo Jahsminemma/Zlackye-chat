@@ -17,7 +17,8 @@
   align-items: center;
   margin-left: 10px;
 }
-.header__left > .MuiSvgIcon-root {
+
+.header__left>.MuiSvgIcon-root {
   font-size: 18px;
   margin-left: 30px;
 }
@@ -30,22 +31,26 @@
   padding: 0 50px;
   text-align: center;
 }
+
 .header__search input {
   background-color: transparent;
   border: none;
   text-align: center;
   min-width: 30vw;
 }
+
 .header__search input:focus {
   border: none;
   outline: none;
   color: rgb(0, 52, 110);
   box-sizing: border-box;
 }
+
 .header__search input::placeholder {
   color: rgb(0, 52, 110);
 }
-.header__search > .MuiSvgIcon-root {
+
+.header__search>.MuiSvgIcon-root {
   font-size: 18px;
   padding: 4px 0;
   color: rgb(0, 52, 110);
@@ -57,27 +62,32 @@
   font-size: 10px;
   cursor: pointer;
 }
+
 .header__help:hover {
   border-radius: 6px;
   background-color: rgb(5, 36, 122);
 }
 
-.header__help > .MuiSvgIcon-root {
+.header__help>.MuiSvgIcon-root {
   margin-left: auto;
 }
-.header__help > h2 {
+
+.header__help>h2 {
   margin-right: 32px;
 }
+
 @media (max-width: 500px) {
   .header__search {
     text-align: left;
     padding: 0%;
   }
+
   .header__search input {
     width: 10px;
     text-align: left;
     padding: 0;
   }
+
   .header__help {
     margin: 0%;
     margin-left: 10px;

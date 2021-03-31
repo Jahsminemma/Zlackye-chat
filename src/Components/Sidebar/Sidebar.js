@@ -17,23 +17,23 @@ import { userAction } from '../../user.reducer';
 const Sidebar = () => {
     const [channels, setChannel] = useState([])
     const [state, dispatch] = useStateValue()
-    
+
     const getDbUsers = () => {
         db.collection("users")
             .onSnapshot(snapshot => {
-            const userData = []
-            snapshot.forEach(doc => {
-                if (state.auth.user.uid !== doc.id) {
-                    userData.push(doc.data())
-                }
-            })
+                const userData = []
+                snapshot.forEach(doc => {
+                    if (state.auth.user.uid !== doc.id) {
+                        userData.push(doc.data())
+                    }
+                })
                 dispatch({
                     type: userAction.REALTIME_USER,
-                    user : userData
+                    user: userData
 
                 })
-        })
-        
+            })
+
     }
 
 
@@ -44,51 +44,52 @@ const Sidebar = () => {
                 name: doc.data().name
             })))))
         getDbUsers()
-    },[])
+    }, [])
     return (
         <div className="sidebar">
             <div className="sidebar__content">
-            <div className="sidebar__top">
+                <div className="sidebar__top">
                     <div className="sidebar__details">
-                         <Link style ={{"textDecoration":"none", color:"lightgrey"}} to ="/">
-                        <h4>
-                            <img src="https://cdn.dribbble.com/users/1937255/screenshots/12209747/media/416371432c05a98dee1a0b3347659008.png?compress=1&resize=800x600" alt="" />
+                        <Link style={{ "textDecoration": "none", color: "lightgrey" }} to="/">
+                            <h4>
+                                <img src="https://cdn.dribbble.com/users/1937255/screenshots/12209747/media/416371432c05a98dee1a0b3347659008.png?compress=1&resize=800x600" alt="" />
                                 <p>Zlackye</p>
                             </h4>
                         </Link>
                         <h5>
-                    <FiberManualRecordIcon /> 
-                   {state.auth.user.displayName}
-                </h5>
+                            <FiberManualRecordIcon />
+                            {state.auth.user.displayName}
+                        </h5>
+                    </div>
                 </div>
-            </div>
-            <SidebarOption Icon={MailOutlineIcon} title={"Inbox"} value={10} />
-            <SidebarOption Icon={SmsIcon} title={"Threads"} value={5} />
-            <SidebarOption Icon={PeopleOutlineIcon} title={"Groups"} />
-            <SidebarOption Icon={AttachFileIcon} title={"File storage"} />
-            <hr/>
-            <SidebarOption Icon={AddIcon} addChannelOption title={"Add channel"} />
+                <SidebarOption Icon={MailOutlineIcon} title={"Inbox"} value={10} />
+                <SidebarOption Icon={SmsIcon} title={"Threads"} value={5} />
+                <SidebarOption Icon={PeopleOutlineIcon} title={"Groups"} />
+                <SidebarOption Icon={AttachFileIcon} title={"File storage"} />
+                <hr />
+                <SidebarOption Icon={AddIcon} addChannelOption title={"Add channel"} />
 
                 {channels.map(channel => {
-                const {name, id} = channel
-                return (
-                    <div key={id} className="sidebar__channelOption">
-                        <SidebarOption  title={name} id ={id} />
-                    </div>
-                )
+                    const { name, id } = channel
+                    return (
+                        <div key={id} className="sidebar__channelOption">
+                            <SidebarOption title={name} id={id} />
+                        </div>
+                    )
                 })}
                 <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
-                
+
                 {state.users.user.map((userData) => {
                     const { photoURL, uid, displayName, isOnline } = userData;
-                return(
-                    <div key={uid} className="Sidebar__userOption">
-                        <SidebarOption isOnline ={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL ={photoURL} title={displayName}  uid={uid}/>
-                    </div>
-                )
+                    return (
+                        <div key={uid} className="Sidebar__userOption">
+                            <SidebarOption isOnline={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL={photoURL} title={displayName} uid={uid} />
+                        </div>
+                    )
                 })}
-          </div>      
             </div>
+            <div style={{ height: "50px" }}></div>
+        </div>
     )
 }
 
