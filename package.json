@@ -16,6 +16,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-textarea-autosize": "^8.3.2",
+    "react-time-ago": "^6.2.2",
+    "timeago-react": "^3.0.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

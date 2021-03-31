@@ -23,14 +23,14 @@ const ChatMessage = ({ Messages}) => {
                     if (state.auth.user.uid !== uid) {
                         return (
                         
-                            <Message
-                                user={user} uid={uid} userImage={userImage} message={message} messageRight={30} timeStamp={timeStamp} />
+                            <Message key = {timeStamp}
+                                user={user} uid={uid} userImage={userImage} message={message} right={"70px"} timeStamp={timeStamp} />
                         )
                     } else {
                         return (
                         
-                            <Message
-                                user={user} uid={uid} userImage={userImage} message={message} messageLeft={13} color={""}  timeStamp={timeStamp} />
+                            <Message key = {timeStamp}
+                                user={user} uid={uid} userImage={userImage} message={message} color={" #49d5ff"} align = {"right"} left={"70px"} timeStamp={timeStamp} />
                         )
                     }
                })}

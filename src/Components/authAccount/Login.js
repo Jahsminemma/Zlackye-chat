@@ -21,13 +21,14 @@ const Login = () => {
                             displayName: data.user.displayName,
                             photoURL: data.user.photoURL,
                             uid: data.user.uid,
-                            isCreated: Date.now(),
+                            isCreatedAt: firebase.firestore.FieldValue.serverTimestamp(),
                             isOnline: true
                         }).then(() => {
                             const loggedInUser = {
                             displayName: data.user.displayName,
                             photoURL: data.user.photoURL,
-                            uid: data.user.uid
+                            uid: data.user.uid,
+                            isCreatedAt  : firebase.firestore.FieldValue.serverTimestamp()
                             }
                              localStorage.setItem("User", JSON.stringify(loggedInUser))
                                 dispatch({

@@ -35,6 +35,8 @@ const Sidebar = () => {
         })
         
     }
+
+
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map(doc => ({
@@ -75,10 +77,9 @@ const Sidebar = () => {
                     </div>
                 )
                 })}
-{}                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
+                <SidebarOption color={"lightblue"} Icon={PeopleIcon} title={"Direct message"} />
                 
                 {state.users.user.map((userData) => {
-                    console.log(userData)
                     const { photoURL, uid, displayName, isOnline } = userData;
                 return(
                     <div key={uid} className="Sidebar__userOption">

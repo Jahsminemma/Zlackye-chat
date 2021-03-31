@@ -29,7 +29,7 @@
   margin-top: 20px;
 }
 .sidebarOption__offline {
-  color: rgb(80, 1, 1);
+  color: rgb(255, 0, 0);
   position: absolute;
 }
 .sidebarOption > .sidebarOption__details > .MuiSvgIcon-root {

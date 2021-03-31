@@ -3,6 +3,7 @@ export const initialState = {
     photoURL: "",
     uid: "",
     authenticated: false,
+    isCreatedAt: "",
     error: null
 }
 

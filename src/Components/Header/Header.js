@@ -34,7 +34,6 @@ const Header = () => {
         <div className="header">
             <div className="header__left">
                 <Avatar className="header__avatar" src={state.auth.user?.photoURL} alt= {state.auth.user?.name} />
-                <AccessTimeIcon/>
             </div>
             <div className="header__search">
                 <SearchIcon />

@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import{ Avatar} from '@material-ui/core'
 import ExploreIcon from '@material-ui/icons/Explore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import avatar from '../../assets/images/avatar.png'
 import  "./ChatHeader.css";
-const ChatHeader = ({ roomInfos, messages }) => {
+const ChatHeader = ({ roomInfos, value, image, hash }) => {
     return (
         <div className="chat__header">
                 <div className="chat__details">
@@ -13,12 +12,12 @@ const ChatHeader = ({ roomInfos, messages }) => {
                         <ArrowBackIosIcon/>   
                     </Link>
                 <div className="channel__avatar">
-                        <Avatar src ={avatar}/>
+                        <Avatar src ={image}/>
                  </div>
                     <div className="channel__info">
                         
-                        <h3>#{ roomInfos?.name}</h3>
-                    <p>{messages?.length} messages</p>
+                    <h3> {hash}{ roomInfos?.name || roomInfos?.displayName}</h3>
+                    <p>{value}</p>
                 </div>
                 </div>
                 <div className="channel__icons">

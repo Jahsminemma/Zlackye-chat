@@ -8,12 +8,12 @@ import Chat from "./Components/Chatbody/Chat";
 import Signup from '../src/Components/authAccount/Login'
 import {useStateValue} from "./StateProvider"
 import { actionType } from './reducer'
-import UserChatScreen from './Components/Chatbody/userChatScreen';
+import UserChatScreen from './Components/Chatbody/UserChatScreen';
 
 
 function App() {
   const [state, dispatch] = useStateValue()
-   {/* check if user is logged in */}
+   /* check if user is logged in */
     const isLoggedInUser =  () => {
         const User = localStorage.getItem("User") ? JSON.parse(localStorage.getItem("User")) : null;
             if (User) {
@@ -53,7 +53,7 @@ function App() {
                    <Switch>
                     <Route path='/' exact component={Sidebar} />
                     <Route path="/room/:roomId" component={Chat} />
-                    <Route path="/user/:userId" component={Chat} /> 
+                    <Route path="/user/:userId" component={UserChatScreen} /> 
                    </Switch>`
                 </div>
               </>

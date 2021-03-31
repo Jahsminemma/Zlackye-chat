@@ -7,7 +7,7 @@
   background-color: lightgray;
   position: fixed;
   width: 70%;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .chat__header .chat__details {
   display: flex;
