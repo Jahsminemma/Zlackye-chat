@@ -1,41 +1,50 @@
 .sidebarOption {
-  padding-left: 10px;
+  padding-left: 5px;
   margin-bottom: 10px;
   justify-content: space-between;
   user-select: none;
   font-size: 16px;
   cursor: pointer;
+  padding-bottom: 3px;
 }
+
 .sidebarOption:hover {
-  background-color: rgb(9, 41, 41);
+  background-color: rgb(3, 70, 126);
 }
+
 .sidebarOption__details {
   display: flex;
   align-items: center;
 }
+
 .sidebarOption__icon,
 .sidebarOption__hash {
   margin-right: 8px;
   color: orangered;
 }
+
 .sidebarOption__userPresence {
   position: absolute;
   color: lime;
 }
+
 .sidebarOption__userPresence .MuiSvgIcon-root,
 .sidebarOption__offline .MuiSvgIcon-root {
   font-size: 12px;
   margin-left: 16px;
   margin-top: 20px;
 }
+
 .sidebarOption__offline {
   color: rgb(255, 0, 0);
   position: absolute;
 }
-.sidebarOption > .sidebarOption__details > .MuiSvgIcon-root {
+
+.sidebarOption>.sidebarOption__details>.MuiSvgIcon-root {
   font-size: 24px;
 }
-.sidebarOption__channel > .sidebarOption__hash {
+
+.sidebarOption__channel>.sidebarOption__hash {
   font-size: 18px;
   margin-left: 6px;
 }

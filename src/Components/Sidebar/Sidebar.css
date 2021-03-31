@@ -37,12 +37,12 @@
 
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(84, 186, 245);
+  background: rgb(18, 115, 172);
 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(18, 115, 172);
+  background: rgb(21, 145, 216);
 }
 
 .sidebar__top {
