@@ -57,7 +57,7 @@ const SidebarOption = ({ Icon, title, id, uid, addChannelOption, photoURL, color
                         <h4 className="sidebarOption__channel">
                             <span className="sidebarOption__hash">#</span>
                             {
-                                title?.slice(0, 10) + "..."
+                                title?.slice(0, 15) + "..."
                             }
                         </h4>
                     )}
