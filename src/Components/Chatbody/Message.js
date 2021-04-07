@@ -18,8 +18,8 @@ const Message = ({ message, pdfUrl, pdfName, audioName, audioUrl, imageUrl, prog
                     {audioUrl ? <div className="audio-content">
                         <audio controls controlsList="nodownload">
                             <source src={audioUrl} />
-                                                Your browser does not support the audio element.
-                                                </audio>
+                            Your browser does not support the audio element.
+                         </audio>
                         <p>{audioName}</p>
                     </div> : null}
                     {message ? <p>{message}</p> : null}
