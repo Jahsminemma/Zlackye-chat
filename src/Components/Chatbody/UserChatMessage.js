@@ -73,6 +73,7 @@ const UserChatMessage = ({ Messages, audio, pdf, progress }) => {
                                         {imageUrl ? (
                                             <img style={{ width: "100%" }} src={imageUrl} alt="user image message" />
                                         ) : null}
+                                        <p>{ message}</p>
                                         <small style={{ fontSize: "10px", float: "right" }}>{new Date(createdAt?.toDate()).toLocaleTimeString()}</small>
                                     </div>
                                 </div>
