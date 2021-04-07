@@ -1,42 +1,56 @@
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from 'react'
 import Message from './Message'
 import { useStateValue } from "../../StateProvider";
+import Loader from "react-loader-spinner";
+import './UserChatMessage.css'
 
-
-const ChatMessage = ({ Messages}) => {
+const ChatMessage = ({ Messages, progress }) => {
     const [state, dispatch] = useStateValue()
+    if (progress) {
+        console.log(parseInt(progress))
+    }
 
     const scrollToView = useRef(null)
 
     const scrollToBottom = () => {
-        scrollToView.current.scrollIntoView({behaviour : "smooth"})
+        scrollToView.current.scrollIntoView({ behaviour: "smooth" })
     }
-         useEffect(() => {
-         scrollToBottom()
+    useEffect(() => {
+        scrollToBottom()
     }, [Messages])
     return (
-        <div style={{marginTop:"70px"}} className="chatMessage">
-             <div className="chat__message">
-                { Messages.map(userMessage => {
-                   
-                    const { user, message, userImage, timeStamp, uid } = userMessage;
+        <div style={{ marginTop: "70px" }} className="chatMessage">
+            <div className="chat__message">
+                {Messages.map(userMessage => {
+
+                    const { user, message, userImage, timeStamp, uid, imageUrl, pdfUrl, pdfName, audioUrl, audioName } = userMessage;
                     if (state.auth.user.uid !== uid) {
                         return (
-                        
-                            <Message key = {timeStamp}
-                                user={user} uid={uid} userImage={userImage} message={message} right={"70px"} timeStamp={timeStamp} />
+
+                            <Message key={timeStamp}
+                                user={user} imageUrl={imageUrl} uid={uid} userImage={userImage} message={message} audioUrl={audioUrl}
+                                right={"70px"} progress={progress} timeStamp={timeStamp} pdfName={pdfName} pdfUrl={pdfUrl} audioName={audioName} />
                         )
                     } else {
                         return (
-                        
-                            <Message key = {timeStamp}
-                                user={user} uid={uid} userImage={userImage} message={message} color={" #49d5ff"} align = {"right"} left={"70px"} timeStamp={timeStamp} />
+
+                            <Message key={timeStamp}
+                                user={user} progress={progress} imageUrl={imageUrl} uid={uid} userImage={userImage} pdfName={pdfName} pdfUrl={pdfUrl} audioName={audioName}
+                                message={message} color={" #49d5ff"} align={"right"} left={"70px"} timeStamp={timeStamp} audioUrl={audioUrl} />
                         )
                     }
-               })}
+                })}
             </div>
-            <div style={{height:"40px"}}
-                ref={scrollToView }>
+            {
+                progress && parseInt(progress) < 100 ? <div className="loader">
+                    <Loader type="Bars" color="#00BFFF"
+                        height={60} width={80} />
+                    <p style={{ color: "#00BFFF", fontWeight: "600" }}>Audio....{Math.round(progress)}%</p>
+                </div> : null
+
+            }
+            <div style={{ height: "40px" }}
+                ref={scrollToView}>
             </div>
         </div>
     )

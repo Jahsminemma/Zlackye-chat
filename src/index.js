@@ -8,17 +8,17 @@ import reducer, { initialState } from "./reducer";
 import userReducer, { userInitialState } from "./user.reducer";
 import combineReducers from "react-combine-reducers"
 
- const [Reducer, InitialState] = combineReducers({
+const [Reducer, InitialState] = combineReducers({
   auth: [reducer, initialState],
   users: [userReducer, userInitialState]
 })
 
 ReactDOM.render(
-  <React.StrictMode>
-   <StateProvider InitialState = {InitialState} reducer = {Reducer} children={App}>
+  <>
+    <StateProvider InitialState={InitialState} reducer={Reducer} children={App}>
       <App />
-  </StateProvider>
-  </React.StrictMode>,
+    </StateProvider>
+  </>,
   document.getElementById('root')
 );
 

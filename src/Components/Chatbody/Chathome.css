@@ -1,6 +1,6 @@
 .chathome {
   text-align: center;
-  background-color:#f6f6f5;
+  background-color: #f6f6f5;
   background-position: center;
   object-fit: cover;
   display: grid;
@@ -16,6 +16,7 @@
 .chathome::-webkit-scrollbar {
   display: none;
 }
+
 .chathome__content {
   width: 600px;
   padding: 30px;
@@ -25,26 +26,30 @@
   color: gray;
   margin-top: 80px;
 }
-@media (max-width: 500px) {
+
+@media (max-width: 600px) {
   .chathome__content {
-    width: 90%;
+    width: 80%;
     padding: 10px;
   }
+
   .chathome {
-    margin-top: 0;
+    margin-top: 20px;
   }
 }
+
 .chathome__content::-webkit-scrollbar {
   display: none;
 }
 
-.chathome__content > img {
+.chathome__content>img {
   width: 200px;
   border-radius: 30%;
   filter: invert();
   padding: 15px 0;
 }
-.chathome > p {
+
+.chathome>p {
   font-weight: 800;
   color: rgb(17, 250, 238);
   background-color: white;
