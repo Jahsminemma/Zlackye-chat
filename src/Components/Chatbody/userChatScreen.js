@@ -172,7 +172,7 @@ const UserChatScreen = () => {
                 value={userInfos?.isOnline ? (
                     <small>Last seen : <TimeAgo datetime={userInfos?.isCreatedAt.toDate()} /></small>
                 ) : ("offline")} />
-            <UserChatMessage Messages={state.users.conversations} progress={progress} pdf={pdf} audio={audio} />
+            <UserChatMessage Messages={state.users.conversations} progress={progress} />
             <ImageModal Image={image} setAudio={setAudio} audio={audio} pdf={pdf} setPdf={setPdf} setImage={setImage} setOpen={setOpen} open={open} readerResult={readerResult} />
             <div className="message__input">
                 < MessageInput
