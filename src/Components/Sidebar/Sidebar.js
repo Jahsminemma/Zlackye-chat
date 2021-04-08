@@ -35,8 +35,6 @@ const Sidebar = () => {
             })
 
     }
-
-
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map(doc => ({

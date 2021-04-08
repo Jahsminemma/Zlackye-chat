@@ -186,6 +186,7 @@ const UserChatScreen = () => {
                     setOpen={setOpen}
                     setPdf={setPdf}
                     setAudio={setAudio}
+                    userId={userId}
                 />
             </div>
         </div>

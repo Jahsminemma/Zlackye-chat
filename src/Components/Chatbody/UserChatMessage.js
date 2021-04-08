@@ -3,6 +3,8 @@ import { useStateValue } from "../../StateProvider";
 import Loader from "react-loader-spinner";
 import './UserChatMessage.css'
 import "./Message.css"
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import DoneIcon from '@material-ui/icons/Done';
 
 
 
@@ -21,7 +23,7 @@ const UserChatMessage = ({ Messages, progress }) => {
             <div className="chat__message">
                 {Messages.map(userMessage => {
 
-                    const { authUserId, imageUrl, pdfUrl, audioUrl, createdAt, message, pdfName, audioName } = userMessage;
+                    const { authUserId, imageUrl, pdfUrl, audioUrl, createdAt, message, pdfName, audioName, isView } = userMessage;
                     if (state.auth.user.uid == authUserId) {
 
                         return (
@@ -44,7 +46,10 @@ const UserChatMessage = ({ Messages, progress }) => {
                      {imageUrl ? <img style={{ width: "100%" }} src={imageUrl} alt="image message" /> : null}
 
                                         <p>{message}</p>
-                                        <small style={{ fontSize: "10px", float: "right" }}>{new Date(createdAt?.toDate()).toLocaleTimeString()}</small>
+                                        <p className="message__indicator">
+                                        <small>{new Date(createdAt?.toDate()).toLocaleTimeString()}</small>
+                                        {isView ? <span className="messageRead"><DoneAllIcon/></span>: <span className="unreadMessage"><DoneIcon/></span>}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

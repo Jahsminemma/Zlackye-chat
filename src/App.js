@@ -9,10 +9,12 @@ import Signup from '../src/Components/authAccount/Login'
 import { useStateValue } from "./StateProvider"
 import { actionType } from './reducer'
 import UserChatScreen from './Components/Chatbody/UserChatScreen';
-
+import db from "./firebase"
+import {userAction} from './user.reducer'
 
 function App() {
   const [state, dispatch] = useStateValue()
+
   /* check if user is logged in */
 
   const [size, setSize] = useState(window.innerWidth)
@@ -32,18 +34,24 @@ function App() {
   }
 
   const checkSize = () => {
-    setSize(window.innerWidth);
+    setSize(window.innerWidth)
   }
 
   useEffect(() => {
     isLoggedInUser()
+
+    console.log(state.users.user)
+    console.log(state.auth.user)
     window.addEventListener("resize", checkSize)
     return () => {
       window.removeEventListener("resize", checkSize)
     }
-
-
   }, [])
+
+ 
+
+ 
+
   return (
     <div className="app">
       <Router>

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SidebarOption.css'
 import db from "../../../firebase";
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
+import { useStateValue } from '../../../StateProvider';
+import { userAction } from '../../../user.reducer';
+
 const useStyles = makeStyles((theme) => ({
     small: {
         width: theme.spacing(3),
@@ -14,15 +17,38 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+export const getUnreadMessage = (userId, authUserId) => {
+    db.collection("conversations")
+        .where("authUserId", "in", [authUserId, userId])
+        .where("authUserId", "==", userId)
+        .where("isView", "==", false)
+        .get()
+        .then(snapshot => {
+            if (snapshot.size > 0) {
+                snapshot.forEach(message => {
+                    db.collection("conversations").doc(message.id).update({ isView: true })
+                    console.log(message.data())
+                })
+            }
+        })
+}
+
+
 const SidebarOption = ({ Icon, title, id, uid, addChannelOption, photoURL, color, Indicator, isOnline }) => {
     const history = useHistory()
     const MuiCoreClass = useStyles()
+    const [state, dispatch] = useStateValue()
+    useEffect(() => {
+
+    }, [])
+
 
     const selectChannel = () => {
         if (id) {
             history.push(`/room/${id}`)
         }
         if (uid) {
+            getUnreadMessage(uid, state.auth.user.uid)
             history.push(`/user/${uid}`)
         }
 

@@ -3,10 +3,14 @@ import Textarea from 'react-textarea-autosize'
 import SendIcon from '@material-ui/icons/Send';
 import './MessageInput.css'
 import AttachFileIcon from '@material-ui/icons/AttachFile';
+import { getUnreadMessage } from '../Sidebar/SidebarOption/SidebarOption';
+import { useStateValue } from '../../StateProvider';
 
-const MessageInput = ({ sendMessage, setPdf,
-    setInputValue, inputValue, setImage,
-    setReaderResult, setOpen, setAudio }) => {
+
+const MessageInput = ({ sendMessage, setPdf, setInputValue, inputValue,
+    setImage, setReaderResult, setOpen, setAudio, userId }) => {
+
+    const [state] = useStateValue()
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
@@ -59,6 +63,7 @@ const MessageInput = ({ sendMessage, setPdf,
                 </label>
                 <Textarea
                     value={inputValue}
+                    onFocus={getUnreadMessage(userId, state.auth.user.uid)}
                     onInput={handleChange}
                     placeholder="Type a message..."
                     maxRows={4} />
