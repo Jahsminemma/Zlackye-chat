@@ -35,6 +35,27 @@ const Sidebar = () => {
             })
 
     }
+    const getUnreadMessage = (userId, authUserId) => {
+        db.collection("conversations")
+            .where("authUserId", "in", [authUserId, userId])
+            .where("UserId", "==", authUserId)
+            .where("isView", "==", false)
+            .onSnapshot(snapshot => {
+                const unreadMessage = []
+                snapshot.forEach(doc => {
+                    if (doc.data().authUserId === authUserId && doc.data().userId === userId) {
+                        unreadMessage.push(doc.data())
+                        console.log(doc.id)
+                    }
+                })
+                dispatch({
+                    type: userAction.UNREAD_MESSAGES,
+                    messages: unreadMessage
+                })
+
+            })
+    }
+
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map(doc => ({
@@ -81,7 +102,7 @@ const Sidebar = () => {
                     const { photoURL, uid, displayName, isOnline } = userData;
                     return (
                         <div key={uid} className="Sidebar__userOption">
-                            <SidebarOption isOnline={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL={photoURL} title={displayName} uid={uid} />
+                            <SidebarOption isOnline={isOnline} Indicator={FiberManualRecordIcon} Icon={Avatar} photoURL={photoURL} title={displayName} getUnreadMessage={getUnreadMessage} uid={uid} />
                         </div>
                     )
                 })}

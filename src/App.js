@@ -9,8 +9,7 @@ import Signup from '../src/Components/authAccount/Login'
 import { useStateValue } from "./StateProvider"
 import { actionType } from './reducer'
 import UserChatScreen from './Components/Chatbody/UserChatScreen';
-import db from "./firebase"
-import {userAction} from './user.reducer'
+
 
 function App() {
   const [state, dispatch] = useStateValue()
@@ -39,9 +38,6 @@ function App() {
 
   useEffect(() => {
     isLoggedInUser()
-
-    console.log(state.users.user)
-    console.log(state.auth.user)
     window.addEventListener("resize", checkSize)
     return () => {
       window.removeEventListener("resize", checkSize)

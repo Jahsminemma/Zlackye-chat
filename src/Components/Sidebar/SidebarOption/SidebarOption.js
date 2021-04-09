@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const getUnreadMessage = (userId, authUserId) => {
+export const readMessage = (userId, authUserId) => {
     db.collection("conversations")
         .where("authUserId", "in", [authUserId, userId])
         .where("authUserId", "==", userId)
@@ -34,12 +34,15 @@ export const getUnreadMessage = (userId, authUserId) => {
 }
 
 
-const SidebarOption = ({ Icon, title, id, uid, addChannelOption, photoURL, color, Indicator, isOnline }) => {
+const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOption, photoURL, color, Indicator, isOnline }) => {
     const history = useHistory()
     const MuiCoreClass = useStyles()
     const [state, dispatch] = useStateValue()
-    useEffect(() => {
 
+    useEffect(() => {
+        if (uid) {
+            getUnreadMessage(uid, state.auth.user.uid)
+        }
     }, [])
 
 
@@ -48,7 +51,7 @@ const SidebarOption = ({ Icon, title, id, uid, addChannelOption, photoURL, color
             history.push(`/room/${id}`)
         }
         if (uid) {
-            getUnreadMessage(uid, state.auth.user.uid)
+            readMessage(uid, state.auth.user.uid)
             history.push(`/user/${uid}`)
         }
 
