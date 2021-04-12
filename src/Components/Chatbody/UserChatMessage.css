@@ -23,7 +23,7 @@
 }
 
 .audio-content audio::-webkit-media-controls-panel {
-    background-color: rgb(100, 250, 250);
+    background-color: rgb(212, 221, 231);
     width: 100%;
 
 
@@ -68,15 +68,23 @@ audio::-webkit-media-controls-current-time-display {
 .message__indicator {
     display: flex;
     justify-content: flex-end;
-    font-size: 11px;
+    font-size: 10px;
     color: #6b7575;
 }
 
 .messageRead>.MuiSvgIcon-root {
-    font-size: 14px;
-    color: rgb(22, 167, 3);
+    font-size: 11px;
+    margin-left: 4px;
+    color: #253ecf;
 }
 
 .unreadMessage>.MuiSvgIcon-root {
     font-size: 14px;
+    color: #253ecf;
+}
+
+.message__text .read-more-less--more,
+.message__text .read-more-less--less {
+    color: rgb(3, 153, 199);
+    font-weight: 500;
 }

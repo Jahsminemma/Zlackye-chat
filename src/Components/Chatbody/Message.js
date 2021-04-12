@@ -1,6 +1,7 @@
 import React from 'react'
 import './Message.css'
 import './UserChatMessage.css'
+import ReactReadMoreReadLess from "react-read-more-read-less"
 const Message = ({ message, pdfUrl, pdfName, audioName, audioUrl, imageUrl, progress, user, userImage, timeStamp, uid, color, align, right, left }) => {
     return (
         <div style={{ textAlign: `${align}`, marginLeft: `${left}`, marginRight: `${right}` }} key={uid} className="message">
@@ -22,7 +23,15 @@ const Message = ({ message, pdfUrl, pdfName, audioName, audioUrl, imageUrl, prog
                          </audio>
                         <p>{audioName}</p>
                     </div> : null}
-                    {message ? <p>{message}</p> : null}
+                    {message ? <p className="message__text"> <ReactReadMoreReadLess
+                        charLimit={600}
+                        readMoreText={"Read more"}
+                        readLessText={"Read less"}
+                        readMoreClassName="read-more-less--more"
+                        readLessClassName="read-more-less--less"
+                    >
+                        {message}
+                    </ReactReadMoreReadLess></p> : null}
                 </div>
             </div>
         </div>

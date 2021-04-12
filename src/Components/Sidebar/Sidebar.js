@@ -38,14 +38,13 @@ const Sidebar = () => {
     const getUnreadMessage = (userId, authUserId) => {
         db.collection("conversations")
             .where("authUserId", "in", [authUserId, userId])
-            .where("UserId", "==", authUserId)
             .where("isView", "==", false)
             .onSnapshot(snapshot => {
                 const unreadMessage = []
                 snapshot.forEach(doc => {
-                    if (doc.data().authUserId === authUserId && doc.data().userId === userId) {
+                    if ((doc.data().authUserId === authUserId && doc.data().userId === userId)
+                        || (doc.data().authUserId === userId && doc.data().userId === authUserId)) {
                         unreadMessage.push(doc.data())
-                        console.log(doc.id)
                     }
                 })
                 dispatch({

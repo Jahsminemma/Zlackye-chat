@@ -25,7 +25,7 @@ const MessageInput = ({ sendMessage, setPdf, setInputValue, inputValue,
         // Allowing file type
         const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
         const pdfExt = /(\.pdf)$/i;
-        const audioExt = /(\.wAV|\.ogg|\.mp3|\.AAC|\.WMC|\.FLAC)$/i;
+        const audioExt = /(\.PSD|\.wAV|\.ogg|\.mp3|\.M4A|\.AAC|\.WMC|\.FLAC|\.3GA|\.AA|\.AAX|\.ABC|\.AC3|\.ACD|\.ACM|\.FLAC|\.IEF|\.GSM|\.FST|\.|\.DSM|\.COPY|\.CFA|\.CFA|\.CDA|\.CAF|\.BMW|\.BAP|\.APF|\.AOB|\.AMZ|\.AL|\.AIFC|\.AHX|\.AFC|\.ADTS|\.ADG|\.ACT|\.AWB|\.AU)$/i;
         if (!file) {
             alert("No file added")
             e.target.value = "";
@@ -34,7 +34,7 @@ const MessageInput = ({ sendMessage, setPdf, setInputValue, inputValue,
             if (file) {
                 const fileSize = file.size;
                 const actualFsize = Math.round(fileSize / 1024);
-                if (actualFsize) {
+                if (actualFsize < 20000) {
                     if (allowedExtensions.exec(filePath)) {
                         setOpen(true)
                         setImage(file)

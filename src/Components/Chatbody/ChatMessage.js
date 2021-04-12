@@ -29,14 +29,14 @@ const ChatMessage = ({ Messages, progress }) => {
 
                             <Message key={timeStamp}
                                 user={user} imageUrl={imageUrl} uid={uid} userImage={userImage} message={message} audioUrl={audioUrl}
-                                right={"70px"} progress={progress} timeStamp={timeStamp} pdfName={pdfName} pdfUrl={pdfUrl} audioName={audioName} />
+                                right={"100px"} left={"20px"} progress={progress} timeStamp={timeStamp} pdfName={pdfName} pdfUrl={pdfUrl} audioName={audioName} />
                         )
                     } else {
                         return (
 
                             <Message key={timeStamp}
                                 user={user} progress={progress} imageUrl={imageUrl} uid={uid} userImage={userImage} pdfName={pdfName} pdfUrl={pdfUrl} audioName={audioName}
-                                message={message} color={" #49d5ff"} align={"right"} left={"70px"} timeStamp={timeStamp} audioUrl={audioUrl} />
+                                message={message} color={" #49d5ff"} align={"right"} left={"170px"} right={"20px"} timeStamp={timeStamp} audioUrl={audioUrl} />
                         )
                     }
                 })}

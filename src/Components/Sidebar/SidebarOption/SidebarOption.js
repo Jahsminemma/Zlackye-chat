@@ -21,6 +21,7 @@ export const readMessage = (userId, authUserId) => {
     db.collection("conversations")
         .where("authUserId", "in", [authUserId, userId])
         .where("authUserId", "==", userId)
+        .where("userId", "==", authUserId)
         .where("isView", "==", false)
         .get()
         .then(snapshot => {
@@ -41,8 +42,9 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
 
     useEffect(() => {
         if (uid) {
-            getUnreadMessage(uid, state.auth.user.uid)
+            window.addEventListener("DOMContentLoadded", getUnreadMessage(uid, state.auth.user.uid))
         }
+
     }, [])
 
 
@@ -56,6 +58,7 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
         }
 
     }
+
     const addNewChannel = () => {
         const channelName = prompt("Please provide a channel name");
         if (channelName) {
@@ -64,7 +67,6 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
             })
         }
     }
-
 
     return (
         <div style={{ color: `${color}` }} className="sidebarOption">
@@ -90,6 +92,9 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
                             }
                         </h4>
                     )}
+                {state.users.messages && parseInt(state.users.messages) > 0 ? (
+                    <p>{state.users.messages.length}</p>
+                ) : null}
             </div>
         </div>
     )
