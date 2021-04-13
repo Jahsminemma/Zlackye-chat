@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Textarea from 'react-textarea-autosize'
 import SendIcon from '@material-ui/icons/Send';
 import './MessageInput.css'

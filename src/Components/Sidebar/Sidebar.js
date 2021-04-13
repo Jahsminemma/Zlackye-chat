@@ -38,6 +38,7 @@ const Sidebar = () => {
     const getUnreadMessage = (userId, authUserId) => {
         db.collection("conversations")
             .where("authUserId", "in", [authUserId, userId])
+            .where("authUserId", "==", userId)
             .where("isView", "==", false)
             .onSnapshot(snapshot => {
                 const unreadMessage = []
@@ -62,6 +63,7 @@ const Sidebar = () => {
                 name: doc.data().name
             })))))
         getDbUsers()
+
     }, [])
     return (
         <div className="sidebar">

@@ -4,7 +4,7 @@ import db from "../../../firebase";
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../../../StateProvider';
-import { userAction } from '../../../user.reducer';
+
 
 const useStyles = makeStyles((theme) => ({
     small: {
@@ -28,21 +28,24 @@ export const readMessage = (userId, authUserId) => {
             if (snapshot.size > 0) {
                 snapshot.forEach(message => {
                     db.collection("conversations").doc(message.id).update({ isView: true })
-                    console.log(message.data())
                 })
             }
         })
 }
 
 
-const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOption, photoURL, color, Indicator, isOnline }) => {
+const SidebarOption = ({ Icon, unreadMessage, title, id, uid, getUnreadMessage, addChannelOption, photoURL, color, Indicator, isOnline }) => {
     const history = useHistory()
     const MuiCoreClass = useStyles()
-    const [state, dispatch] = useStateValue()
+    const [state] = useStateValue()
 
     useEffect(() => {
         if (uid) {
-            window.addEventListener("DOMContentLoadded", getUnreadMessage(uid, state.auth.user.uid))
+            getUnreadMessage(uid, state.auth.user.uid)
+
+            if (state.users.messages.authUserId === uid) {
+                console.log(uid)
+            }
         }
 
     }, [])
@@ -81,9 +84,8 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
                         {Indicator && <Indicator />}
                     </span>
                 )}
-                {Icon ? (
-                    <h4>{title}</h4>
-                ) :
+                {Icon ? <h4>{title}</h4>
+                 :
                     (
                         <h4 className="sidebarOption__channel">
                             <span className="sidebarOption__hash">#</span>
@@ -92,9 +94,7 @@ const SidebarOption = ({ Icon, title, id, uid, getUnreadMessage, addChannelOptio
                             }
                         </h4>
                     )}
-                {state.users.messages && parseInt(state.users.messages) > 0 ? (
-                    <p>{state.users.messages.length}</p>
-                ) : null}
+                {unreadMessage ? <p>{ unreadMessage.length}</p>: null }
             </div>
         </div>
     )

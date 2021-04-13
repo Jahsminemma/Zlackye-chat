@@ -11,7 +11,6 @@ export const userAction = {
 }
 
 const userReducer = (state, action) => {
-
     switch (action.type) {
         case userAction.REALTIME_USER:
             return {

@@ -7,6 +7,8 @@ export const errorHandler = (error) => {
         case 'storage/canceled':
             alert(" you have cancel the upload")
             break;
+        default:
+            return true
     }
 }
 

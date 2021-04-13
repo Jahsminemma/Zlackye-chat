@@ -5,7 +5,7 @@ import Loader from "react-loader-spinner";
 import './UserChatMessage.css'
 
 const ChatMessage = ({ Messages, progress }) => {
-    const [state, dispatch] = useStateValue()
+    const [state] = useStateValue()
     if (progress) {
         console.log(parseInt(progress))
     }
