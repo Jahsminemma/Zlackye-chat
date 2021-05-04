@@ -1,6 +1,7 @@
 # Zlackye Chat
 
 This is a chat application that allows private conversations between users and also have group chats.
+#####  Link to app -----> [https://zlackye.netlify.app]
 
 # FEATURES
 
